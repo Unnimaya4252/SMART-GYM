@@ -1,0 +1,94 @@
+{% extends 'physician_temp/physicianbase.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class =card>
+
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+
+       <th scope="col">ID</th>
+       <th scope="col">NAME</th>
+       <th scope="col">MEMBERSHIP NAME</th>
+       <th scope="col">DURATION</th>
+
+
+
+   </tr>
+   </thead>
+   <tbody>
+   {% for i in data %}
+
+
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.user.user2}}</td>
+         <td>{{i.schedule.membership_name}}</td>
+         <td>{{i.schedule.duration}}</td>
+         <td>{{i.status}}</td>
+
+ {% if i.status == 0 %}
+<td>
+
+      <form action="{% url 'memberapprove' i.id %}" method="POST">
+                 {% csrf_token %}
+
+
+          <button type="submit" class="btn btn-outline-dark">APPROVE</button></form>
+</td>
+         <td>
+
+      <form action="{% url 'memberreject' i.id %}" method="POST">
+                 {% csrf_token %}
+
+
+          <button type="submit" class="btn btn-outline-dark">REJECT</button></form>
+</td>
+
+    {% if i.status == 1 %}
+         <td>
+             <h5 style="color:green;">approved</h5>
+         </td>
+              {% elif i.status == 2 %}
+         <td>
+             <h5 style="color:red;">rejected</h5>
+         </td>
+              {% endif %}
+
+
+         {% elif i.status == 1 %}
+         <td>
+             <h5 style="color:green;">approved</h5>
+         </td>
+         {% elif i.status == 2  %}
+         <td>
+             <h5 style="color:red;">rejected</h5>
+         </td>
+         {% endif %}
+
+         <td>
+          <form action="{% url 'membershipdelt' i.id %}" method="POST">
+                 {% csrf_token %}
+
+
+                    <button type="submit" class="btn btn-outline-dark">Delete</button>
+
+
+
+
+</form>
+         </td>
+
+
+     </tr>
+   {% endfor %}
+
+
+
+   </tbody>
+</table>
+</div>
+
+ {% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'admin_temp/adminbase.html' %}
+
+{% block content %}
+<div class="card">
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+    <th scope="col">NO</th>
+       <th scope="col">NAME</th>
+       <th scope="col">FEE</th>
+
+
+
+
+   </tr>
+   </thead>
+
+<tbody>
+{% for i in data %}
+<tr>
+    <td>{{forloop.counter}}</td>
+         <td>{{i.customer_name}}</td>
+         <td>{{i.fee_amount}}</td>
+
+
+
+     </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}

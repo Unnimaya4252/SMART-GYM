@@ -1,0 +1,37 @@
+{% extends 'admin_temp/adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card">
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+    <th scope="col">NO</th>
+       <th scope="col">USER</th>
+       <th scope="col">DATE</th>
+       <th scope="col">FEEDBACK</th>
+       <th scope="col">REPLY</th>
+
+
+
+   </tr>
+   </thead>
+
+<tbody>
+{% for i in data %}
+<tr>
+    <td>{{forloop.counter}}</td>
+         <td>{{i.user}}</td>
+         <td>{{i.date}}</td>
+         <td>{{i.feedback}}</td>
+         <td>{{i.reply}}</td>
+
+
+     </tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+
+{% endblock %}

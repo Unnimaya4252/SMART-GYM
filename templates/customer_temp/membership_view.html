@@ -1,0 +1,28 @@
+{% extends 'customer_temp/customerbase.html' %}
+
+{% block content %}
+
+   <div class="row">
+        {% for i in data %}
+    <div class="col-sm-3">
+        <div class="card">
+        <img src="{{ i.image.url }}" style="...">
+            <div class="card-body">
+<!--                <p class="card-text">{{ forloop.counter}}</p>-->
+                <h4 class="card-title">{{ i.membership_name}}</h4>
+                <h6 class="card-title">{{ i.duration}}</h6>
+                <a href="{% url 'memberjoin' i.id %}" class="btn btn-secondary">Join</a>
+
+
+            </div>
+        </div>
+    </div>
+        {% endfor %}
+   </div>
+ {% for message in messages %}
+            <div style="background:white;text-align:center;color:red;width:50%;margin-left:400px;" class="alert" role="alert">
+                {{message}}
+            </div>
+            {%endfor%}
+
+{% endblock %}

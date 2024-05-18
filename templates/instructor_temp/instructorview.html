@@ -1,0 +1,43 @@
+{% extends 'instructor_temp/instructorbase.html' %}
+
+{% block content %}
+
+<h1>Table</h1>
+
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+
+       <th scope="col">ID</th>
+       <th scope="col">INSTRUCTOR_ID</th>
+       <th scope="col">INSTRUCTOR NAME</th>
+       <th scope="col">EMAIL</th>
+       <th scope="col">CONTACT NUMBER</th>
+
+
+   </tr>
+   </thead>
+   <tbody>
+   {% for i in data %}
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.Instructor_Id}}</td>
+         <td>{{i.Instructor_Name}}</td>
+         <td>{{i.Email}}</td>
+         <td>{{i.Contact_Number}}</td>
+
+
+
+     </tr>
+
+
+     {% endfor %}
+
+
+
+   </tbody>
+</table>
+
+
+ {% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'customer_temp/customerbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="card">
+
+{% for i in data %}
+  <h4 class="card-title">{{ i.description}}</h4>
+
+
+  {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'admin_temp/adminbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+
+<h1>Table</h1>
+
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+
+       <th scope="col">NO</th>
+       <th scope="col">CUSTOMER NAME</th>
+       <th scope="col">MEMBERSHIP NAME</th>
+       <th scope="col">DURATION</th>
+
+
+
+   </tr>
+   </thead>
+   <tbody>
+    {% for i in data %}
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.user.user1}}</td>
+         <td>{{i.schedule.membership_name}}</td>
+         <td>{{i.schedule.duration}}</td>
+
+
+
+         {% if i.schedule.membershipname..user == request.user %}
+
+
+             {% if i.status == 0 %}
+
+        <td>
+             <form action="{% url 'teacherapprove' i.id %}" method="POST">
+                {%csrf_token %}<button type="submit" class="btn btn-success">APPROVE</button>
+             </form>
+
+        </td>
+         <td>
+              <form action="{% url 'teacherreject' i.id %}" method="POST">
+                {%csrf_token %}<button type="submit" class="btn btn-success">REJECT</button>
+              </form>
+         </td>
+
+
+
+             {% elif i.status == 1 %}
+         <td>
+             <h5 style="color:green;">approved</h5>
+         </td>
+              {% elif i.status == 2 %}
+         <td>
+             <h5 style="color:red;">rejected</h5>
+         </td>
+              {% endif %}
+
+
+         {% elif i.status == 1 %}
+         <td>
+             <h5 style="color:green;">approved</h5>
+         </td>
+         {% elif i.status == 2  %}
+         <td>
+             <h5 style="color:red;">rejected</h5>
+         </td>
+         {% endif %}
+
+
+
+
+
+
+
+
+     </tr>
+    {% endfor %}
+
+
+     </tr>
+   </tbody>
+
+    {% endblock %}
+
+
+
+
+{% endblock %}

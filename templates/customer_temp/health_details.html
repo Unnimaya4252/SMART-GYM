@@ -1,0 +1,16 @@
+{% extends 'customer_temp/customerbase.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card">
+<div class="col-md-12">
+            <form method="POST" action="#">
+                {% csrf_token %}
+                {{data|crispy}}
+                <input type="submit" class="btn btn-secondary" value="submit"/>
+                <a href="{% url 'healthdetailsview' %}" class="btn btn-secondary">View</a>
+
+            </form>
+        </div>
+</div>
+{% endblock %}

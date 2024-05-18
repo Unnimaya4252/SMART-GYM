@@ -1,0 +1,61 @@
+{% extends 'admin_temp/adminbase.html' %}
+
+{% block content %}
+
+<h1>Table</h1>
+<div class="card">
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+       <th scope="col">NO</th>
+
+       <th scope="col">NAME</th>
+       <th scope="col">DATE</th>
+       <th scope="col">COMPLAINTS</th>
+       <th scope="col">REPLY</th>
+
+
+   </tr>
+   </thead>
+   <tbody>
+   {% for i in data %}
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.user5}}</td>
+         <td>{{i.date}}</td>
+         <td>{{i.complaints}}</td>
+         <td>
+             {% if i.reply == None %}
+             <a href="{% url 'replyadmin' i.id %}" class="btn btn-outline-dark">Reply</a>
+             {% else %}
+
+
+             {{i.reply}}
+             {% endif %}
+
+
+         </td>
+         <td>
+          <form action="{% url 'custcomplaintadmindelt' i.id %}" method="POST">
+                 {% csrf_token %}
+
+
+                    <button type="submit" class="btn btn-outline-dark">Delete</button>
+
+
+
+
+</form>
+         </td>
+
+
+
+     </tr>
+   </tbody>
+
+{% endfor %}
+
+   </table>
+</div>
+{% endblock %}>

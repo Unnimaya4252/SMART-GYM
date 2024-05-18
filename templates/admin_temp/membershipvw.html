@@ -1,0 +1,40 @@
+{% extends 'admin_temp/adminbase.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+
+<div class =card>
+
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+
+       <th scope="col">ID</th>
+       <th scope="col">NAME</th>
+       <th scope="col">MEMBERSHIP NAME</th>
+       <th scope="col">DURATION</th>
+
+
+
+   </tr>
+   </thead>
+   <tbody>
+   {% for i in data %}
+
+
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.user.user2}}</td>
+         <td>{{i.schedule.membership_name}}</td>
+         <td>{{i.schedule.duration}}</td>
+
+   </tr>
+   {% endfor %}
+
+
+
+   </tbody>
+</table>
+</div>
+
+ {% endblock %}

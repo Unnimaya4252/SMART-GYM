@@ -1,0 +1,45 @@
+{% extends 'physician_temp/physicianbase.html' %}
+
+{% block content %}
+
+<h1>Table</h1>
+<div class="card">
+<table class="table">
+   <thead class="table table-striped">
+
+   <tr>
+
+       <th scope="col">ID</th>
+       <th scope="col">CUSTOMERID</th>
+       <th scope="col">CUSTOMERR NAME</th>
+       <th scope="col">CUSTOMERR AGE</th>
+       <th scope="col">EMAIL</th>
+       <th scope="col">CONTACT NUMBER</th>
+
+
+
+   </tr>
+   </thead>
+   <tbody>
+   {% for i in data %}
+     <tr>
+         <td>{{forloop.counter}}</td>
+         <td>{{i.Customer_Id}}</td>
+         <td>{{i.Customer_Name}}</td>
+         <td>{{i.Customer_Age}}</td>
+         <td>{{i.Customer_Email}}</td>
+         <td>{{i.Customer_Number}}</td>
+
+
+
+     </tr>
+
+
+     {% endfor %}
+
+
+   </tbody>
+</table>
+
+</div>
+ {% endblock %}
